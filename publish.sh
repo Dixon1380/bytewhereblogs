@@ -6,6 +6,9 @@ echo "== ByteWhere Publish =="
 # Go to repo root
 cd "$(dirname "$0")"
 
+# Go to site/
+cd site
+
 echo "Pulling latest..."
 git pull --rebase
 
