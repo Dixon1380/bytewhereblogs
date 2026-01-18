@@ -5,12 +5,15 @@ import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getCollection } from 'astro:content';
 
-// Load blog posts from Astro content collection
-const posts = await getCollection('blog');
+let posts = await getCollection('blog');
 
-// Sort newest first by pubDate
+// Drop anything without id or pubDate
+posts = posts.filter((p) => p.id && p.data?.pubDate);
+
+// Sort newest first
 posts.sort((a, b) => b.data.pubDate - a.data.pubDate);
 ---
+
 
 <!doctype html>
 <html lang="en">
@@ -25,15 +28,12 @@ posts.sort((a, b) => b.data.pubDate - a.data.pubDate);
 
       <section>
         {posts.length === 0 && <p>No posts yet. Generate some with the engine.</p>}
-
         {posts.map((post) => (
           <article style="margin-bottom: 2rem;">
             <h2>
-              <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
             </h2>
-            {post.data.description && (
-              <p>{post.data.description}</p>
-            )}
+            {post.data.description && <p>{post.data.description}</p>}
             <small>{post.data.pubDate.toDateString()}</small>
           </article>
         ))}
