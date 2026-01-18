@@ -13,7 +13,7 @@ echo "Installing deps..."
 npm install
 
 echo "Building site..."
-npm run build
+npx astro build
 
 echo "Checking changes..."
 if git diff --quiet && git diff --cached --quiet; then
