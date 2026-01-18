@@ -1,22 +1,20 @@
-#!/usr/bin/env bash
+k#!/usr/bin/env bash
 set -e
 
 echo "== ByteWhere Publish =="
 
-# Go to repo root
 cd "$(dirname "$0")"
-
-# Go to site/
-cd site
 
 echo "Pulling latest..."
 git pull --rebase
 
 echo "Installing deps..."
+cd site
 npm install
 
 echo "Building site..."
-npx astro build
+npm run build
+cd ..
 
 echo "Checking changes..."
 if git diff --quiet && git diff --cached --quiet; then
@@ -32,3 +30,4 @@ echo "Pushing..."
 git push
 
 echo "Done. GitHub Actions will deploy."
+
