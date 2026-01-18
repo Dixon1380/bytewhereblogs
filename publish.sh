@@ -5,8 +5,8 @@ echo "== ByteWhere Publish =="
 
 cd "$(dirname "$0")"
 
-echo "Pulling latest..."
-git pull --rebase
+# echo "Pulling latest..."
+# git pull --rebase
 
 echo "Installing deps..."
 cd site
