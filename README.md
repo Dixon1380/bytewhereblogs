@@ -19,7 +19,7 @@ If you’re interested in how things are actually made — this is.
 
   * ForgeKernel
   * ByteForce
-  * Pyact
+  * Pya
   * AI-native infrastructure
 
 Everything here is written to be useful, honest, and practical.
