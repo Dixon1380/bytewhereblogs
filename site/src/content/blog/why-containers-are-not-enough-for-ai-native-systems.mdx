@@ -1,0 +1,29 @@
+---
+title: "Why containers are not enough for AI-native systems"
+description: "Why containers fall short for AI-native systems, exploring limitations in shared kernel resources, inherent isolation, and architectural requirements."
+pubDate: "2026-01-18"
+tags: ["containers", "AI systems", "isolation", "performance", "ForgeKernel"]
+---
+# Why Containers Fall Short for AI-Native Systems
+
+I've been working on ForgeKernel, a systems-first kernel that’s being designed with AI-native goals in mind. One thing became clear: containers are useful abstractions, but they're not enough to meet the unique requirements of AI workloads.
+
+Containers excel at packing up an application with its dependencies and running it anywhere. However, when dealing with AI-native systems, we need more guarantees than containers can provide. High-concurrency scenarios common in AI workloads create specific demands that containers can't meet on their own.
+
+## Shared Kernel Resources
+
+One major limitation is the reliance on shared kernel resources. As concurrency increases, this shared resource contention leads to performance issues. Containers are designed for efficiency, but they still rely on the underlying kernel, which becomes a bottleneck as concurrency grows.
+
+## Inherent Isolation
+
+Another issue is the lack of inherent isolation for sensitive AI data. Containers don't inherently provide the necessary guarantees for securing sensitive information. This vulnerability makes containers unsuitable for handling sensitive AI data or preventing side-channel attacks.
+
+## Rethinking Architecture
+
+Containers are useful, but they're not designed to meet the unique requirements of AI-native systems. AI workloads require more fine-grained control over system resources than containers can offer. We need a deeper understanding and control over memory management, data processing, and scalability.
+
+AI-native systems demand more than just containerization; we need to rethink how we architect our systems to efficiently handle these unique demands.
+
+## Next Steps
+
+I believe we can build a better foundation by exploring alternative approaches and rethinking our architecture to meet the unique demands of AI workloads. What I’m testing next is how a system could be designed to better support AI-native workloads.

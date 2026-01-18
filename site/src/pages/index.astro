@@ -1,0 +1,44 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+
+// Load blog posts from Astro content collection
+const posts = await getCollection('blog');
+
+// Sort newest first by pubDate
+posts.sort((a, b) => b.data.pubDate - a.data.pubDate);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>ByteWhere Labs</h1>
+      <p>Building AI-native systems, operating systems, and intent-driven software.</p>
+
+      <section>
+        {posts.length === 0 && <p>No posts yet. Generate some with the engine.</p>}
+
+        {posts.map((post) => (
+          <article style="margin-bottom: 2rem;">
+            <h2>
+              <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+            </h2>
+            {post.data.description && (
+              <p>{post.data.description}</p>
+            )}
+            <small>{post.data.pubDate.toDateString()}</small>
+          </article>
+        ))}
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

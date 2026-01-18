@@ -1,0 +1,49 @@
+---
+title: "Why static schedulers break under AI workloads"
+description: "How static schedulers fail under AI workloads: A guide for system builders"
+pubDate: "2026-01-18"
+tags: ["scheduler", "AI workloads", "systems", "ForgeKernel", "performance"]
+---
+Why Static Schedulers Fail Under AI Workloads
+====================================================
+
+As I design ForgeKernel and think through AI-heavy workloads, it’s clear how static schedulers will struggle with that kind of behavior. In this post, I'll explore why these schedulers fall short when faced with complex AI computations.
+
+The Issue with Static Schedulers
+---------------------------------
+
+Static schedulers rely on pre-defined rules to manage resources and allocate workloads. While they're effective for predictable workloads, they don't adapt to changing conditions. This makes them ill-suited for dynamic and unpredictable AI computations.
+
+In my design experiments with ForgeKernel, static schedulers show clear limits under AI-style workloads.This has led to poor system performance and increased latency. Even the best static schedulers can become overwhelmed by complex AI computations, resulting in system crashes or timeouts.
+
+The Need for Dynamic Scheduling
+--------------------------------
+
+Dynamic scheduling is better equipped to handle AI workloads because it adapts to changing conditions. By using this approach, you can improve resource allocation, reduce latency, and increase overall system performance.
+
+### Design Constraints
+
+When designing systems that must handle AI workloads, we need to consider the limitations of static schedulers. This includes understanding the constraints on our design choices.
+
+* **Predictability**: Static schedulers rely on predictability to function effectively. However, AI workloads are inherently unpredictable, making it difficult for these schedulers to adapt.
+* **Resource allocation**: Static schedulers struggle with dynamic resource allocation, which is critical in AI workloads that require rapid changes in resource usage.
+
+### The Path Forward
+
+To overcome the limitations of static schedulers, we need to explore alternative approaches. This includes developing systems that can adapt to changing conditions and handle complex AI computations.
+
+#### Current Understanding
+
+My current understanding is that static schedulers are fundamentally limited by their reliance on pre-defined rules and heuristics. While there may be ways to modify or extend these schedulers, my focus will be on exploring dynamic scheduling techniques to improve system performance under AI workloads.
+
+#### Next Steps
+
+I'm currently investigating ways to integrate dynamic scheduling into ForgeKernel to improve its performance under AI workloads. This includes experimenting with different scheduling algorithms and evaluating their effectiveness in handling complex AI computations.
+
+### Future Directions
+
+As we continue to build and test systems like ForgeKernel, it's essential to recognize the limitations of static schedulers and explore alternative approaches. By adopting more dynamic scheduling techniques, we can create systems that are better equipped to handle the demands of AI workloads.
+
+### Conclusion
+
+In this post, I've highlighted the limitations of static schedulers in handling AI workloads. While these schedulers have their place in predictable workloads, they fall short when faced with complex AI computations. By understanding the constraints and limitations of these schedulers, we can design systems that are better equipped to handle the demands of AI workloads.
