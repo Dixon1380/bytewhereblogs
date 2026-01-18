@@ -7,7 +7,8 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://bytewhere.com',
-  srcDir: './site/src', 
+  srcDir: './src',
   integrations: [mdx(), sitemap()],
 });
+
 
