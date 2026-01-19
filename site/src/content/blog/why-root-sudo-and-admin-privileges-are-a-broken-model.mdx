@@ -1,0 +1,104 @@
+---
+title: "Why Root, Sudo, and Admin Privileges Are a Broken Model"
+description: "Understanding the limitations of traditional root, sudo, and admin privileges is crucial for designing secure operating systems."
+pubDate: "2026-01-19"
+tags: ["security", "sudo", "root", "admin", "capabilities", "privilege escalation", "ForgeKernel"]
+---
+---
+
+title: "Why Root, Sudo, and Admin Privileges Are a Broken Model"
+description: "Understanding the limitations of traditional root, sudo, and admin privileges is crucial for designing secure operating systems."
+pubDate: "2026-01-19"
+tags: ["security", "sudo", "root", "admin", "capabilities", "privilege escalation", "ForgeKernel"]
+--------------------------------------------------------------------------------------------------
+
+# Why Root, Sudo, and Admin Privileges Are Outdated
+
+The idea that one account should have unlimited power is not a feature.
+It’s a design failure.
+
+Root, sudo, and admin privileges were built for a world that doesn’t exist anymore. A world where systems were isolated, users were trusted, and “just don’t be dumb” was considered a security strategy.
+
+Modern systems are networked, hostile, and constantly under social engineering attack. If your system still relies on a god account, your system is already broken.
+
+As I design ForgeKernel, this is one of the first assumptions I’m throwing away.
+
+## The Flaws of the Traditional Model
+
+Root and admin accounts assume that:
+
+* Some humans should permanently hold unlimited power
+* Elevation is rare and safe
+* Users always understand what they’re approving
+
+None of that is true anymore.
+
+Most real-world breaches don’t start with elite hackers breaking crypto. They start with:
+
+* Someone clicking “yes”
+* Someone running a script they don’t understand
+* Someone pasting a command from a forum
+
+If you can run it, malware can too.
+
+Sudo doesn’t fix this. It just adds a password prompt before disaster.
+
+The model itself is flawed: permanent power is too dangerous for modern systems.
+
+## Why Incremental Fixes Aren’t Enough
+
+RBAC and ABAC try to fix the problem by slicing god-mode into smaller pieces.
+
+That’s better than nothing—but it still assumes someone should permanently hold power.
+
+Roles, titles, departments—these are identity-based systems. They answer the wrong question.
+
+The real question is not:
+
+“Who are you?”
+
+It’s:
+
+“What exactly are you trying to do right now?”
+
+ForgeKernel isn’t built around identity-based privilege. It’s built around capability-based execution.
+
+## Designing a New Approach
+
+In ForgeKernel, we’re exploring a capability-first model:
+
+* No root account
+* No sudo
+* No permanent admin
+* Only explicit, scoped permissions for specific actions
+
+If something needs access, it asks for exactly that—nothing more.
+
+Not a role.
+Not a title.
+Not a crown.
+
+Capabilities are:
+
+* Narrow
+* Time-bound
+* Action-specific
+
+You don’t become powerful.
+You are temporarily trusted to do one thing.
+
+And when that thing is done, the power disappears.
+
+This doesn’t eliminate social engineering—but it limits the blast radius. One bad click shouldn’t mean total system compromise.
+
+## Builder Take
+
+I believe root, sudo, and admin accounts are a design failure carried forward by habit.
+
+They made sense when systems were small, isolated, and trusted.
+They don’t make sense in a world of malware, phishing, and one-click installs.
+
+I might be wrong about how far capability-based systems can scale.
+I’m testing whether a kernel can enforce this model without becoming unusable.
+
+Next, I’m prototyping capability enforcement directly in ForgeKernel’s core—so “god-mode” isn’t even possible.
